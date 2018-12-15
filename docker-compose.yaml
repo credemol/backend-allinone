@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:9.5
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=dbuser
+    - POSTGRES_PASSWORD=dbpasswd
+    - POSTGRES_MULTIPLE_DATABASES=db_allinone,db_user,db_menu,db_order,db_customer,db_payment
+    volumes:
+    - ./db/initdb.d/:/docker-entrypoint-initdb.d/
+    #- postgres_db:/var/lib/postgresql/data
+    #      - ./docker/postgres/initdb.d/:/docker-entrypoint-initdb.d/
+    #      - ./docker/postgres/data:/var/lib/postgresql/data
+    # - ./docker/postgres/data_20180726:/var/lib/postgresql/data

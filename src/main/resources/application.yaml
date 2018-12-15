@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/db_allinone
+    driver-class-name: org.postgresql.Driver
+    username: dbuser
+    password: dbpasswd
+    hikari:
+      idle-timeout: 10000
+      connection-test-query: SELECT 1
+      minimum-idle: 1
+      maximum-pool-size: 5
+#      pool-name: yourPoolName
+#      auto-commit: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl_auto: update
+      show_sql: true
+#  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
+#  spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
+#spring.datasource.url=jdbc:postgresql://localhost:5432/postgres_demo
+#spring.datasource.username= rajeevkumarsingh
+#spring.datasource.password=
+#
+#  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+#
+#  # Hibernate ddl auto (create, create-drop, validate, update)
+#spring.jpa.hibernate.ddl-auto = update
