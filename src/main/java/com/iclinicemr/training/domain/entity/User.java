@@ -25,7 +25,7 @@ public class User extends BaseEntity {
     @Column(name="email")
     private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade= {CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.LAZY, cascade= {CascadeType.REFRESH})
     @JoinTable(name="user_roles",
             joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")}
@@ -102,5 +102,17 @@ public class User extends BaseEntity {
 
     public void addRole(UserRole role) {
         this.roles.add(role);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

@@ -47,8 +47,8 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Page<MenuVO> getMenus(Pageable pageRequest) {
         Page page = this.menuRepository.findAll(pageRequest);
-        page.map(menu -> modelMapper.map(menu, MenuVO.class));
-        return page;
+        return page.map(menu -> modelMapper.map(menu, MenuVO.class));
+//        return page;
     }
 
     @Override

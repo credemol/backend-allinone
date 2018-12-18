@@ -6,20 +6,21 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
+//@Entity
+@Embeddable
 @Table(name = "order_item")
 public class OrderItem {
-    @Id
-    @GeneratedValue(generator = "uuid-generator")
-    @GenericGenerator(name = "uuid-generator", strategy = "uuid2")
-    @Type(type="pg-uuid")
-    protected UUID id;
+//    @Id
+//    @GeneratedValue(generator = "uuid-generator")
+//    @GenericGenerator(name = "uuid-generator", strategy = "uuid2")
+//    @Type(type="pg-uuid")
+//    protected UUID id;
 
-    @ManyToOne
-    @JoinColumn(name="order_id")
-    private Order order;
+//    @ManyToOne
+//    @JoinColumn(name="order_id")
+//    private Order order;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="menu_id")
     private Menu menu;
 
@@ -30,26 +31,30 @@ public class OrderItem {
     }
 
     public OrderItem(Order order, Menu menu, int quantity) {
-        this.order = order;
         this.menu = menu;
         this.quantity = quantity;
     }
 
-    public UUID getId() {
-        return id;
+    public OrderItem(Menu menu, int quantity) {
+        this.menu = menu;
+        this.quantity = quantity;
     }
+//
+//    public UUID getId() {
+//        return id;
+//    }
+//
+//    public void setId(UUID id) {
+//        this.id = id;
+//    }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public Menu getMenu() {
         return menu;

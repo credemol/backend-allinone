@@ -14,7 +14,7 @@ public class Role extends BaseEntity{
     @Column(name="description")
     private String description;
 
-    @ManyToMany(cascade = { CascadeType.REFRESH})
+    @ManyToMany(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 //    @ElementCollection(fetch = FetchType.EAGER)
 //    @CollectionTable(name="user_roles", joinColumns = @JoinColumn(name="role_id"))
 //    @Column(name="user_id")

@@ -34,7 +34,7 @@ public class OrderRepositoryTest {
 
     @Test
     @DisplayName("Insert orders")
-    public void test_05_InsertOrders() {
+    public void test_01_InsertOrders() {
         Menu juniperLatte = menuRepository.findOneByName("Juniper Latte").get();
         Menu icedJuniperLatte = menuRepository.findOneByName("Iced Juniper Latte").get();
         Menu caffeLatte = menuRepository.findOneByName("Caffe Latte").get();
