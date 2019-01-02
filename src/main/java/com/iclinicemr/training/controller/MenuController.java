@@ -32,9 +32,8 @@ public class MenuController {
 
     @GetMapping
     public ResponseEntity<Page<MenuVO>> getAllMenus(@RequestParam(name="page", defaultValue = "0") int page,
-                                    @RequestParam(name="size", defaultValue = "100") int size,
-                                    Pageable pageable) {
-        return ResponseEntity.ok(menuService.getMenus(pageable));
+                                    @RequestParam(name="size", defaultValue = "100") int size) {
+        return ResponseEntity.ok(menuService.getMenus(PageRequest.of(page, size)));
 //        return new ResponseEntity<Page<MenuVO>>(menuService.getMenus(pageable), HttpStatus.OK);
     }
 
@@ -55,10 +54,6 @@ public class MenuController {
         } catch(EntityNotFoundException ex) {
 //            ex.printStackTrace();
             return new ResponseEntity<MenuVO>(HttpStatus.NOT_FOUND);
-        } catch(Exception ex) {
-//            ex.printStackTrace();
-            //return new ResponseEntity<>(MenuVO)(HttpStatus.)
-            throw ex;
         }
     }
 

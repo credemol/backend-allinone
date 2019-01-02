@@ -27,15 +27,19 @@ public class User extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade= {CascadeType.REFRESH})
     @JoinTable(name="user_roles",
-            joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name="role_id")}
     )
+//    @JoinTable(name="user_roles",
+//            joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")}
+//    )
+
 
 //    @ElementCollection()
 //    @CollectionTable(name="user_roles", joinColumns = @JoinColumn(name="id"))
 ////    @Column(name="role_id")
 ////    @JoinTable(name="user_roles", joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"))
-    private Set<UserRole> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
@@ -92,15 +96,15 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    public Set<UserRole> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<UserRole> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
-    public void addRole(UserRole role) {
+    public void addRole(Role role) {
         this.roles.add(role);
     }
 

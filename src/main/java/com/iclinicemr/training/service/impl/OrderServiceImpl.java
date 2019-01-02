@@ -8,6 +8,7 @@ import com.iclinicemr.training.message.*;
 import com.iclinicemr.training.service.OrderService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,6 +60,39 @@ public class OrderServiceImpl implements OrderService {
             throw new EntityNotFoundException("menu id: " + id);
         }
         return modelMapper.map(entity, OrderVO.class);
+    }
+
+    @Override
+    @Transactional
+    public OrderVO create(OrderVO vo) {
+        return modelMapper.map(this.orderRepository.save(modelMapper.map(vo, Order.class)), OrderVO .class);
+    }
+
+    @Override
+    @Transactional
+    public OrderVO update(UUID id, OrderVO vo) {
+        Order entity = orderRepository.findById(id).orElse(null);
+
+        if(entity == null) {
+            throw new EntityNotFoundException();
+        }
+
+        Menu converted = modelMapper.map(vo, Menu.class);
+
+        BeanUtils.copyProperties(converted, entity, "id", "version");
+
+        return modelMapper.map(this.orderRepository.save(entity), OrderVO.class);
+
+    }
+
+    @Override
+    public void delete(UUID id) {
+        Order entity = orderRepository.findById(id).orElse(null);
+
+        if(entity == null) {
+            throw new EntityNotFoundException();
+        }
+        orderRepository.delete(entity);
     }
 
     @Override

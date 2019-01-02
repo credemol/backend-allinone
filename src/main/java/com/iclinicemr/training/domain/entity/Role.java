@@ -20,10 +20,14 @@ public class Role extends BaseEntity{
 //    @Column(name="user_id")
 //    @JoinTable(name="user_roles", joinColumns = @JoinColumn(name="role_id", referencedColumnName = "id"))
     @JoinTable(name="user_roles",
-            joinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name="role_id")},
+            inverseJoinColumns = {@JoinColumn(name="user_id")}
     )
-    private Set<UserRole> users = new HashSet<>();
+//    @JoinTable(name="user_roles",
+//            joinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")}
+//    )
+
+    private Set<User> users = new HashSet<>();
 
     public Role() {
     }
@@ -48,15 +52,15 @@ public class Role extends BaseEntity{
         this.description = description;
     }
 
-    public Set<UserRole> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserRole> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
-    public void addUser(UserRole user) {
+    public void addUser(User user) {
         users.add(user);
     }
 

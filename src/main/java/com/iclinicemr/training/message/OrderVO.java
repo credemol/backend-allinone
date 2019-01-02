@@ -8,7 +8,7 @@ import java.util.*;
 
 public class OrderVO extends BaseVO {
     @NotNull
-    private User customer;
+    private UserVO customer;
     @Max(1000)
     private String description;
 
@@ -17,16 +17,16 @@ public class OrderVO extends BaseVO {
     public OrderVO() {
     }
 
-    public OrderVO(@NotNull User customer, @Max(1000) String description) {
+    public OrderVO(@NotNull UserVO customer, @Max(1000) String description) {
         this.customer = customer;
         this.description = description;
     }
 
-    public User getCustomer() {
+    public UserVO getCustomer() {
         return customer;
     }
 
-    public void setCustomer(User customer) {
+    public void setCustomer(UserVO customer) {
         this.customer = customer;
     }
 

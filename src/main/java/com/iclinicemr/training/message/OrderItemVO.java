@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class OrderItemVO {
     private UUID id;
-    private OrderVO order;
+//    private OrderVO order;
     private MenuVO menu;
     private int quantity;
 
@@ -16,13 +16,13 @@ public class OrderItemVO {
         this.id = id;
     }
 
-    public OrderVO getOrder() {
-        return order;
-    }
-
-    public void setOrder(OrderVO order) {
-        this.order = order;
-    }
+//    public OrderVO getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(OrderVO order) {
+//        this.order = order;
+//    }
 
     public MenuVO getMenu() {
         return menu;

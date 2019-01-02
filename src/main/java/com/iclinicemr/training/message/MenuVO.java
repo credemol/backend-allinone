@@ -8,7 +8,7 @@ public class MenuVO extends BaseVO {
     // validataion: https://blog.codecentric.de/en/2017/11/dynamic-validation-spring-boot-validation/
 
     @NotNull
-    @Max(255)
+    @Size(max = 255)
     private String name;
 
     @NotNull
@@ -16,10 +16,10 @@ public class MenuVO extends BaseVO {
     @DecimalMax("100.0")
     private BigDecimal price;
 
-    @Max(1000)
+    @Size(max = 1000)
     private String description;
 
-    @Max(255)
+    @Size(max = 255)
     private String imageUrl;
 
     public String getName() {

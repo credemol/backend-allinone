@@ -13,6 +13,9 @@ import java.util.UUID;
 public interface OrderService {
     Page<OrderListVO> getOrders(Pageable pageRequest);
     OrderVO get(UUID id);
+    OrderVO create(OrderVO vo);
+    OrderVO update(UUID id, OrderVO vo);
+    void delete(UUID id);
 
     List<OrderWithPriceVO> getOrdersWithPrice();
 
